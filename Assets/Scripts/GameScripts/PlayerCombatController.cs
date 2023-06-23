@@ -21,6 +21,9 @@ public class PlayerCombatController : MonoBehaviour
     int projectileSpeed=7;
     InterstitialAdExample initAd;
     AudioSource gunNoise;
+    Material playerMaterial;
+    bool death = false;
+    float fade = 1f;
 
     void Start()
     {
@@ -41,14 +44,16 @@ public class PlayerCombatController : MonoBehaviour
                 break;
         }
         player = GameObject.Find("Player");
-        cannon01 = player.GetComponentsInChildren<Transform>()[3].gameObject;
-        cannon02 = player.GetComponentsInChildren<Transform>()[4].gameObject;
+        cannon01 = player.GetComponentsInChildren<Transform>()[2].gameObject;
+        cannon02 = player.GetComponentsInChildren<Transform>()[3].gameObject;
+        playerMaterial = player.GetComponent<Material>();
         PlayerCollisionController.PlayerIsHit += PlayerHasBeenHit;
         ProjectileLifespanController.AsteroidIsHit += AsteroidHasBeenHit;
     }
 
     private void PlayerHasBeenHit()
     {
+        death = true;
         initAd.ShowAd();
         player.SetActive(false);
         deathScreen.SetActive(true);
@@ -80,6 +85,17 @@ public class PlayerCombatController : MonoBehaviour
             GameObject proj2 = Instantiate(projectile, cannon02.transform);
             proj1.GetComponent<Rigidbody2D>().velocity = Vector2.up*projectileSpeed;
             proj2.GetComponent<Rigidbody2D>().velocity = Vector2.up*projectileSpeed;
+        }
+        if (death)
+        {
+            fade-=Time.deltaTime;
+            if (fade<=0f)
+            {
+                fade = 0f;
+                death = false;
+            }
+            playerMaterial.SetFloat("_Fade", fade);
+
         }
         cooldown-=Time.deltaTime;
     }

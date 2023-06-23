@@ -38,6 +38,7 @@ public class MainMenuController : SceneNode
     MyLabel titleLabel;
     MyAudio backgroundMusic;
     MyLabel gameStartcurrency;
+    MyLabel gems;
     public MainMenuController() : base(SceneNames.MainMenu)
     {
     }
@@ -80,6 +81,7 @@ public class MainMenuController : SceneNode
         quitButton.SetText("Return");
         quitButton.OnClick(() =>
         {
+            PrefabVariables.SaveValues();
             ActivateStoreMenu();
         });
     }
@@ -180,7 +182,7 @@ public class MainMenuController : SceneNode
                     case 1:
                         if (PrefabVariables.GoldCurrency>=5000)
                         {
-                            PrefabVariables.GoldCurrency -= 50000; 
+                            PrefabVariables.GoldCurrency -= 5000; 
                             PrefabVariables.Weapon1Level = 2;
                             weapon1Label.SetText("10000");
                             gameStartcurrency.SetText($"{PrefabVariables.GoldCurrency} gold");
@@ -189,7 +191,9 @@ public class MainMenuController : SceneNode
                     case 2:
                         if (PrefabVariables.GoldCurrency >= 10000)
                         {
-                            PrefabVariables.GoldCurrency -= 100000;
+                            int x = PrefabVariables.GoldCurrency - 10000;
+                            Debug.Log("Gold calculatio: "+x);
+                            PrefabVariables.GoldCurrency = x;
                             PrefabVariables.Weapon1Level = 3;
                             gameStartcurrency.SetText($"{PrefabVariables.GoldCurrency} gold");
                             weapon1Label.SetText("Max");
@@ -212,7 +216,7 @@ public class MainMenuController : SceneNode
                     case 1:
                         if (PrefabVariables.GoldCurrency >= 7000)
                         {
-                            PrefabVariables.GoldCurrency -= 70000;
+                            PrefabVariables.GoldCurrency -= 7000;
                             PrefabVariables.Weapon2Level = 2;
                             weapon2Label.SetText("12000");
                             gameStartcurrency.SetText($"{PrefabVariables.GoldCurrency} gold");
@@ -221,7 +225,7 @@ public class MainMenuController : SceneNode
                     case 2:
                         if (PrefabVariables.GoldCurrency >= 12000)
                         {
-                            PrefabVariables.GoldCurrency -= 120000;
+                            PrefabVariables.GoldCurrency -= 12000;
                             PrefabVariables.Weapon2Level = 3;
                             weapon2Label.SetText("Max");
                             gameStartcurrency.SetText($"{PrefabVariables.GoldCurrency} gold");
@@ -266,6 +270,7 @@ public class MainMenuController : SceneNode
     private void ActivateStoreMenu()
     {
         titleLabel.SetText("Store");
+        gems.SetText($"{PrefabVariables.GemCurrency} gems");
         mainMenu.SetActive(false);
         storeMenu.SetActive(true);
         settingsMenu.SetActive(false);
@@ -287,7 +292,7 @@ public class MainMenuController : SceneNode
     {
         MyLabel currency = new MyLabel("Currecny");
         currency.SetText($"{PrefabVariables.GoldCurrency} gold");
-        MyLabel gems = new MyLabel("Gem");
+        gems = new MyLabel("Gem");
         gems.SetText($"{PrefabVariables.GemCurrency} gems");
         MyButton addGemButton = new MyButton("AddGemButton");
         addGemButton.OnClick(() => {
@@ -313,9 +318,10 @@ public class MainMenuController : SceneNode
             }
         });
         shipItem02.OnClick(() => {
-            if (PrefabVariables.GoldCurrency >= 5000 && PrefabVariables.ownedShips[1] == "n")
+            if (PrefabVariables.GoldCurrency >= 15000 && PrefabVariables.GemCurrency>=1500 && PrefabVariables.ownedShips[1] == "n")
             {
-                PrefabVariables.GoldCurrency -= 5000;
+                PrefabVariables.GoldCurrency -= 15000;
+                PrefabVariables.GemCurrency -= 1500;
                 shipItem02.GiveMeButtonImageObject().color = Color.yellow;
                 PrefabVariables.ownedShips[1] = "y";
                 currency.SetText($"{PrefabVariables.GoldCurrency}");
