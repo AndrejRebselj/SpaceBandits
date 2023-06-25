@@ -46,7 +46,7 @@ public class PlayerCombatController : MonoBehaviour
         player = GameObject.Find("Player");
         cannon01 = player.GetComponentsInChildren<Transform>()[2].gameObject;
         cannon02 = player.GetComponentsInChildren<Transform>()[3].gameObject;
-        playerMaterial = player.GetComponent<Material>();
+        playerMaterial = player.GetComponent<Renderer>().material;
         PlayerCollisionController.PlayerIsHit += PlayerHasBeenHit;
         ProjectileLifespanController.AsteroidIsHit += AsteroidHasBeenHit;
     }
@@ -54,11 +54,6 @@ public class PlayerCombatController : MonoBehaviour
     private void PlayerHasBeenHit()
     {
         death = true;
-        initAd.ShowAd();
-        player.SetActive(false);
-        deathScreen.SetActive(true);
-        Time.timeScale = 0;
-        
     }
 
     public void AsteroidHasBeenHit(GameObject collision) 
@@ -88,11 +83,15 @@ public class PlayerCombatController : MonoBehaviour
         }
         if (death)
         {
-            fade-=Time.deltaTime;
+            fade -=Time.deltaTime;
             if (fade<=0f)
             {
                 fade = 0f;
                 death = false;
+                //player.SetActive(false);
+                initAd.ShowAd();
+                deathScreen.SetActive(true);
+                Time.timeScale = 0;
             }
             playerMaterial.SetFloat("_Fade", fade);
 

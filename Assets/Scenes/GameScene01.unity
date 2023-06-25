@@ -370,27 +370,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 532889935367001519, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 532889935367001519, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 532889935367001519, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 97.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 532889935367001519, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 37.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 532889935367001519, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 68.72
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 532889935367001519, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -28.755
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 723387110940954960, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_textAlignment
@@ -434,11 +434,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 866896196248900278, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -172.56
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 866896196248900278, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 57.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 866896196248900278, guid: 7e4815653e81d4acd927f4e28d8b8530, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1209,7 +1209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1233473627
 MonoBehaviour:
   m_ObjectHideFlags: 0

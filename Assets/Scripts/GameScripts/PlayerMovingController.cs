@@ -26,9 +26,9 @@ public class PlayerMovingController : MonoBehaviour
     }
     void Update()
     {
-        if (useSensor) 
+        if (useSensor)
         {
-            movement = new Vector2(gyroscope.attitude.x*speed,gyroscope.attitude.y*speed);
+            movement = new Vector2(gyroscope.attitude.x * speed, gyroscope.attitude.y * speed);
             player.transform.position = new Vector2(Mathf.Clamp(player.transform.position.x, -2.815f, 2.815f), Mathf.Clamp(player.transform.position.y, -5f, 5f));
         }
         else if (Input.touchCount > 0)
